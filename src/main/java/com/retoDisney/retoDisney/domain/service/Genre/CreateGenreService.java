@@ -1,0 +1,4 @@
+package com.retoDisney.retoDisney.domain.service.Genre;
+
+public class CreateGenreService {
+}

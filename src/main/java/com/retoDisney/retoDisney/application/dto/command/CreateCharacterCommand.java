@@ -1,29 +1,19 @@
-package com.retoDisney.retoDisney.infrastructure.repository.Entity;
+package com.retoDisney.retoDisney.application.dto.command;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Entity
-@Table(name = "characters")
-public class CharacterEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateCharacterCommand {
 
     private String name;
-    private String image;
     private Integer age;
     private Long weight;
     private String history;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private List<Long> moviesId;
+    private String image;
 
     public String getName() {
         return name;
@@ -31,14 +21,6 @@ public class CharacterEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public Integer getAge() {
@@ -63,5 +45,21 @@ public class CharacterEntity {
 
     public void setHistory(String history) {
         this.history = history;
+    }
+
+    public List<Long> getMoviesId() {
+        return moviesId;
+    }
+
+    public void setMoviesId(List<Long> moviesId) {
+        this.moviesId = moviesId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

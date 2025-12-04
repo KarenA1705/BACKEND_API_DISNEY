@@ -19,4 +19,6 @@ public interface CharacterRespository {
     Character updateById(Long id);
 
     List<CharacterFilter> filter(CharacterFilter filter);
+
+    boolean existsByName(String name);
 }

@@ -39,12 +39,16 @@ public class CharacterRepositoryImpl implements CharacterRespository {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public boolean deleteById(Long id) {
+        if (existById(id))
+            return false;
+
         jpaRepository.deleteById(id);
+        return true;
     }
 
     @Override
-    public Character updateById(Long id) {
+    public Character updateById(Long id, Character character) {
         return null;
     }
 
@@ -56,5 +60,10 @@ public class CharacterRepositoryImpl implements CharacterRespository {
     @Override
     public boolean existsByName(String name) {
         return false;
+    }
+
+    @Override
+    public boolean existById(Long id) {
+        return !jpaRepository.existsById(id);
     }
 }

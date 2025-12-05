@@ -14,11 +14,13 @@ public interface CharacterRespository {
 
     Optional<Character> findById(Long id);
 
-    void deleteById(Long id);
+    boolean deleteById(Long id);
 
-    Character updateById(Long id);
+    Character updateById(Long id, Character character);
 
     List<CharacterFilter> filter(CharacterFilter filter);
 
     boolean existsByName(String name);
+
+    boolean existById(Long id);
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCharacterCommand {
+public class CharacterCommand {
 
     private String name;
     private Integer age;

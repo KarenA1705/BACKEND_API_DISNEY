@@ -3,7 +3,9 @@ package com.retoDisney.retoDisney.infrastructure.controller;
 import com.retoDisney.retoDisney.application.dto.command.CharacterCommand;
 import com.retoDisney.retoDisney.application.dto.response.CharacterResponse;
 import com.retoDisney.retoDisney.application.usecase.CharacterUseCase;
+import com.retoDisney.retoDisney.domain.filter.CharacterFilter;
 import com.retoDisney.retoDisney.domain.model.Character;
+import com.retoDisney.retoDisney.infrastructure.mapper.CharacterMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,5 +44,15 @@ public class CharacterController {
     @PutMapping("/characters/{id}")
     public Optional<CharacterResponse> update(@PathVariable Long id, @RequestBody CharacterCommand command) {
         return characterUseCase.updateCharacter(id, command);
+    }
+
+    @GetMapping(value = "/charactersFilter")
+    public List<CharacterResponse> getByParams(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Integer age,
+            @RequestParam(required = false) Long movies
+    ) {
+        CharacterFilter characterFilter = new CharacterFilter(name, age, movies);
+        return characterUseCase.filterCharacter(characterFilter);
     }
 }

@@ -2,11 +2,9 @@ package com.retoDisney.retoDisney.application.usecase;
 
 import com.retoDisney.retoDisney.application.dto.command.CharacterCommand;
 import com.retoDisney.retoDisney.application.dto.response.CharacterResponse;
+import com.retoDisney.retoDisney.domain.filter.CharacterFilter;
 import com.retoDisney.retoDisney.domain.model.Character;
-import com.retoDisney.retoDisney.domain.service.Character.CreateCharacterService;
-import com.retoDisney.retoDisney.domain.service.Character.DeleteCharacterService;
-import com.retoDisney.retoDisney.domain.service.Character.GetCharacterService;
-import com.retoDisney.retoDisney.domain.service.Character.UpdateCharacterService;
+import com.retoDisney.retoDisney.domain.service.Character.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +17,14 @@ public class CharacterUseCase {
     private final DeleteCharacterService deleteCharacterService;
     private final GetCharacterService getCharacterByIDService;
     private final UpdateCharacterService updateCharacterService;
+    private final FilterCharactersService filterCharactersService;
 
-    public CharacterUseCase(CreateCharacterService createCharacterService, DeleteCharacterService deleteCharacterService, GetCharacterService getCharacterByIDService, UpdateCharacterService updateCharacterService) {
+    public CharacterUseCase(CreateCharacterService createCharacterService, DeleteCharacterService deleteCharacterService, GetCharacterService getCharacterByIDService, UpdateCharacterService updateCharacterService, FilterCharactersService filterCharactersService) {
         this.createCharacterService = createCharacterService;
         this.deleteCharacterService = deleteCharacterService;
         this.getCharacterByIDService = getCharacterByIDService;
         this.updateCharacterService = updateCharacterService;
+        this.filterCharactersService = filterCharactersService;
     }
 
     public CharacterResponse executeSave(CharacterCommand command) {
@@ -88,5 +88,14 @@ public class CharacterUseCase {
                         c.getImage(),
                         c.getName()
                 ));
+    }
+
+    public List<CharacterResponse> filterCharacter(CharacterFilter characterFilter) {
+        List<Character> list = filterCharactersService.getCharacterParams(characterFilter);
+        return list.stream().map(c -> new CharacterResponse(
+                c.getId(),
+                c.getImage(),
+                c.getName()
+        )).toList();
     }
 }

@@ -53,8 +53,11 @@ public class CharacterRepositoryImpl implements CharacterRespository {
     }
 
     @Override
-    public List<CharacterFilter> filter(CharacterFilter filter) {
-        return null;
+    public List<Character> filter(CharacterFilter filter) {
+        List<CharacterEntity> getFilter = jpaRepository.findByFilter(filter.getName(), filter.getAge());
+        return getFilter.stream()
+                .map(CharacterMapper::toDomain)
+                .toList();
     }
 
     @Override

@@ -1,9 +1,10 @@
-package com.retoDisney.retoDisney.infrastructure.repository.CharacterRepository;
+package com.retoDisney.retoDisney.infrastructure.repository.CharacterRepository.character;
 
 import com.retoDisney.retoDisney.domain.filter.CharacterFilter;
 import com.retoDisney.retoDisney.domain.model.Character;
 import com.retoDisney.retoDisney.domain.repository.CharacterRespository;
 import com.retoDisney.retoDisney.infrastructure.mapper.CharacterMapper;
+import com.retoDisney.retoDisney.infrastructure.repository.CharacterRepository.character.CharacterJpaRepository;
 import com.retoDisney.retoDisney.infrastructure.repository.Entity.CharacterEntity;
 import org.springframework.stereotype.Component;
 

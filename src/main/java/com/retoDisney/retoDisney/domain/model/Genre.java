@@ -8,6 +8,12 @@ public class Genre {
     private String image;
     private List<Movie> movies;
 
+    public Genre(Long id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,4 +1,4 @@
-package com.retoDisney.retoDisney.infrastructure.repository.CharacterRepository;
+package com.retoDisney.retoDisney.infrastructure.repository.CharacterRepository.character;
 
 import com.retoDisney.retoDisney.infrastructure.repository.Entity.CharacterEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

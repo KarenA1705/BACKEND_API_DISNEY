@@ -7,7 +7,7 @@ public class Movie {
     private String image;
     private String title;
     private String creationDate;
-    private Integer rating;
+    private Double rating;
     private Genre genre;
     private List<Character> characters;
 
@@ -43,11 +43,11 @@ public class Movie {
         this.creationDate = creationDate;
     }
 
-    public Integer getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
